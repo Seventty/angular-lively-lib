@@ -3,5 +3,37 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "lively": {
+      "projectType": "library",
+      "root": "projects/lively",
+      "sourceRoot": "projects/lively/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/lively/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/lively/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/lively/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lively/src/test.ts",
+            "tsConfig": "projects/lively/tsconfig.spec.json",
+            "karmaConfig": "projects/lively/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "lively"
 }
